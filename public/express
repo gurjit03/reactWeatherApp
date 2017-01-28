@@ -1,0 +1,17 @@
+What is Middleware?
+Middleware is a function that receives the request and response objects of an HTTP request/response cycle. It may modify (transform) these objects before passing them to the next middleware function in the chain. It may decide to write to the response; it may also end the response without continuing the chain.
+
+In other frameworks “middleware” is called “filters”, but the concept is the same: a request, response, and some transformation functions.
+
+A very simple middleware function looks like this:
+
+function logger(req,res,next){
+  console.log(new Date(), req.method, req.url);
+  next();
+}
+
+The job of Express is to manage your chain of middleware functions. All middleware should achieve three things:
+
+It should be a function that does something awesome
+It’s well-documented
+It can be easily mixed into your existing Express application
