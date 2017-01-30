@@ -30,15 +30,15 @@ var Weather = React.createClass({
 
     function renderMessage() {
       if(isLoading) {
-        return <h3>Loading the weather , please be patient....</h3>;
+        return <h3 className="text-center">Loading the weather , please be patient....</h3>;
       }else if(temp && cityName) {
-        return   <DisplayWeather cityName={cityName} temp={temp}/>;
+        return <DisplayWeather cityName={cityName} temp={temp}/>;
       }
     }
 
     return (
       <div className="weather-form-wrapper">
-        <h3>Weather Component</h3>
+        <h1 className="text-center">Get Weather</h1>
         <GetWeatherForm onGetWeather={this.handleGetWeather}/>
         {renderMessage()}
       </div>
