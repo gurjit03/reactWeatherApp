@@ -9,9 +9,9 @@ module.exports = {
     var requestUrl = `${WEATHER_MAP_API_URL}&q=${encodedLocation}`;
 
     return axios.get(requestUrl).then(function(res){
-      //debugger;
+      debugger;
       if(res.data.cod && res.data.message) {
-        alert(res.data.message);  
+        alert(res.data.message);
         throw new Error(res.data.message)
       }else {
         return res.data.main.temp;

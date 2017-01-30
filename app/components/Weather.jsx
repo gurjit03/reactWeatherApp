@@ -11,18 +11,20 @@ var Weather = React.createClass({
   },
 
   handleGetWeather : function(cityName) {
+  var that = this;
     this.setState({isLoading : true});
 
-    OpenWeatherMap.getTemp(cityName).then((temp) => {
+    OpenWeatherMap.getTemp(cityName).then(function(temp){
+    debugger;
       console.log(this);
-      this.setState({
+      that.setState({
         cityName : cityName,
         temp : temp + '*C',
         isLoading : false
       })
-    }).catch((err) => {
-      this.setState({isLoading : true});
-      alert(err);
+    },function (err){
+      that.setState({isLoading : true});
+      alert(err.message);
     })
   },
   render : function() {
@@ -38,7 +40,7 @@ var Weather = React.createClass({
 
     return (
       <div className="weather-form-wrapper">
-        <h1 className="text-center">Get Weather</h1>
+        <h1 className="text-center page-title">Get Weather</h1>
         <GetWeatherForm onGetWeather={this.handleGetWeather}/>
         {renderMessage()}
       </div>
